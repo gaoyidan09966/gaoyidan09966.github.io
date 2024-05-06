@@ -907,7 +907,7 @@ button {
   clear: both;
 }
 .markdown-body {
-  font-family: '/*[4]*/', '自定义中文字体名称', sans-serif;
+  font-family: 'Noto Sans SC', 'Noto Sans SC', sans-serif;
   font-size: 16px;
 }
 .markdown-body blockquote {
@@ -1017,7 +1017,7 @@ button {
 .markdown-body .h4,
 .markdown-body .h5,
 .markdown-body .h6 {
-  font-family: '/*[4]*/', '自定义中文字体名称', sans-serif;
+  font-family: 'Noto Sans SC', 'Noto Sans SC', sans-serif;
   color: var(--second-text-color);
   line-height: 1.5;
   margin-bottom: 1rem !important;
@@ -3019,7 +3019,7 @@ html.is-animating .transition-fade {
   width: 100%;
   font-size: 0.92rem;
   box-sizing: border-box;
-  font-family: '/*[4]*/', '自定义中文字体名称', 'Noto Sans', 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Sans SC', 'Noto Sans SC', 'Noto Sans', 'Noto Sans SC', sans-serif;
 }
 .post-toc-wrap .post-toc .toc-title {
   font-size: 0.8rem;
@@ -6925,7 +6925,7 @@ html.is-animating .scroll-progress-bar {
   }
 }
 .article-copyright-info-container {
-  font-family: '/*[4]*/', 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Sans SC', 'Noto Sans SC', sans-serif;
   position: relative;
   width: 100%;
   box-sizing: border-box;
@@ -7270,7 +7270,7 @@ html.is-animating .scroll-progress-bar {
   font-size: 1.4rem;
   line-height: 1.5;
   color: var(--second-text-color);
-  font-family: '/*[4]*/', '自定义中文字体名称', 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Sans SC', 'Noto Sans SC', 'Noto Sans SC', sans-serif;
   margin: 0;
 }
 @media (max-width: 768px) {
