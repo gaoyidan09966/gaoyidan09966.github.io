@@ -11,6 +11,12 @@
     }
 }
 
+/* 侧边卡片的透明度变量和其他全局变量 */
+:root {
+    --card-bg: rgba(225, 248, 242, 0.9); /* 侧边卡片的默认背景色，包含透明度 */
+    /* 可以在这里添加其他全局变量，例如 --primary-color, --text-color 等 */
+}
+
 /* 适用于文章页、卡片、最近文章等主要内容区域的渐变和动画效果 */
 .layout_post > #post,
 #aside_content .card-widget,
@@ -19,7 +25,7 @@
 .layout_post > #page,
 .read-mode .layout_post > #post {
     /* 柔和的浅色渐变背景，从左下到右上 */
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef, #dee2e6);
+    background: linear-gradient(135deg, #f8f9fa, #cadff1, #cde6fb, #a5caed);
     background-size: 300% 300%; /* 扩大渐变区域，以便动画时有足够的空间移动 */
     animation: gradient-animation 18s ease infinite; /* 应用渐变动画，18秒一个循环，平滑过渡，无限重复 */
 
@@ -46,12 +52,6 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 增加阴影效果 */
 }
 
-/* 侧边卡片的透明度变量 */
-:root {
-    --card-bg: rgba(225, 248, 242, 0.9);
-}
-
-/* 修复后的 #footer 样式 */
 #footer {
     position: relative;
     /* background-color: $light-blue; /* 如果 $light-blue 是 SCSS/LESS 变量，需要相应地在预处理器中使用或替换为具体颜色值 */
