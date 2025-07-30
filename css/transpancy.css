@@ -65,8 +65,6 @@
 
 /* 鼠标悬停时页脚的效果 */
 #footer:hover {
-    backdrop-filter: blur(8px); /* 悬停时略微增加模糊 */
+    backdrop-filter: blur(0.1px); /* 悬停时略微增加模糊 */
     -webkit-backdrop-filter: blur(8px);
-    /* 悬停时改变页脚渐变方向 */
-    background: linear-gradient(-90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0.1));
 }
