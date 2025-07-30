@@ -1,0 +1,175 @@
+/* 滚动条隐藏 */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* 禁用图片点击,butterfly渲染后会给图片套上fancybox，点开后会造成信笺偏移 */
+.formmain {
+    pointer-events: none !important;
+}
+
+/* top-img隐藏 */
+#page-header {
+    background: transparent !important;
+}
+
+/* 宽度小于530px隐藏信封 */
+@media screen and (max-width: 530px) {
+    #computer {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 530px) {
+    #mobile {
+        display: none !important;
+    }
+}
+
+#article-container img {
+    margin: 0 auto 0rem;
+}
+
+/* 毛玻璃效果添加到整个背景 */
+#computer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 背景模糊 */
+    -webkit-backdrop-filter: blur(10px); /* Safari兼容 */
+}
+
+/* 信封部分的外观保持不变 */
+#form-wrap {
+    overflow: hidden;
+    height: 447px;
+    position: relative;
+    top: 0px;
+    transition: all 1s ease-in-out .3s;
+    z-index: 0;
+}
+
+/* 信封区域 */
+#form-wrap:hover {
+    height: 900px;
+    top: -200px;
+}
+
+/* 调整信封的内容区域 */
+#beforeimg {
+    position: absolute;
+    bottom: 126px;
+    left: 0px;
+    background-repeat: no-repeat;
+    width: 530px;
+    height: 317px;
+    z-index: -100;
+    pointer-events: none;
+}
+
+#afterimg {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    background-repeat: no-repeat;
+    width: 530px;
+    height: 259px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+#envelope {
+    position: relative;
+    overflow: visible;
+    width: 500px;
+    margin: 0px auto;
+    transition: all 1s ease-in-out .3s;
+    padding-top: 200px;
+}
+
+/* 主要内容区域 */
+#maincontent {
+    width: 530px;
+    margin: 20px auto 0;
+}
+
+.headerimg {
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* 这里是表单内容的样式 */
+.formmain {
+    background: rgba(255, 255, 255, 0.1); /* 半透明的白色背景 */
+    backdrop-filter: blur(10px); /* 背景模糊 */
+    -webkit-backdrop-filter: blur(10px); /* Safari兼容 */
+    width: 95%;
+    max-width: 800px;
+    margin: auto auto;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* 边框颜色稍微透明 */
+    overflow: hidden;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.18);
+}
+
+/* 标题样式 */
+.title3 {
+    text-decoration: none;
+    color: rgb(246, 214, 175);
+}
+
+/* 评论部分 */
+.comments {
+    border-bottom: #ddd 1px solid;
+    border-left: #ddd 1px solid;
+    padding-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* 透明背景 */
+    backdrop-filter: blur(8px); /* 背景模糊 */
+    margin: 15px 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top: #ddd 1px solid;
+    border-right: #ddd 1px solid;
+    padding-top: 20px;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+}
+
+/* 底部内容样式 */
+.bottomcontent {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* 底部图片 */
+.bottomimg {
+    width: 100%;
+    margin: 5px auto 5px auto;
+    display: block;
+    pointer-events: none;
+}
+
+/* 底部文字 */
+.bottomhr {
+    font-size: 12px;
+    text-align: center;
+    color: #999;
+}
+
+/* 夜间模式 */
+[data-theme='dark'] .formmain {
+    background: rgba(50, 50, 50, 0.7); /* 更深的背景透明度 */
+    backdrop-filter: blur(10px); /* 背景模糊 */
+    -webkit-backdrop-filter: blur(10px); /* Safari兼容 */
+}
+
+[data-theme='dark'] .comments {
+    background: rgba(90, 90, 90, 0.8); /* 夜间模式下的毛玻璃背景 */
+    backdrop-filter: blur(8px); /* 背景模糊 */
+    -webkit-backdrop-filter: blur(8px); /* Safari兼容 */
+}
