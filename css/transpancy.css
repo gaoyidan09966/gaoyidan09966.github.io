@@ -1,0 +1,54 @@
+/* 文章页背景 - 基础毛玻璃效果 */
+.layout_post>#post {
+    background: rgba(255, 255, 255, .7); /* 半透明白色背景 */
+    backdrop-filter: blur(5px); /* 默认较轻的模糊 */
+    -webkit-backdrop-filter: blur(5px); /* 兼容WebKit浏览器 */
+    transition: backdrop-filter 0.3s ease-in-out; /* 添加过渡效果 */
+}
+
+/* 鼠标悬停时增加模糊度，营造动态感 */
+.layout_post>#post:hover {
+    backdrop-filter: blur(15px); /* 悬停时更强的模糊 */
+    -webkit-backdrop-filter: blur(15px);
+}
+
+/* 所有页面背景 - 基础毛玻璃效果 */
+#aside_content .card-widget,
+#recent-posts>.recent-post-item,
+.layout_page>div:first-child:not(.recent-posts),
+.layout_post>#page,
+.layout_post>#post,
+.read-mode .layout_post>#post {
+    background: rgba(255, 255, 255, .8); /* 半透明白色背景 */
+    backdrop-filter: blur(8px); /* 默认中等模糊 */
+    -webkit-backdrop-filter: blur(8px);
+    transition: backdrop-filter 0.4s ease-in-out; /* 添加过渡效果 */
+}
+
+/* 鼠标悬停时增加模糊度 */
+#aside_content .card-widget:hover,
+#recent-posts>.recent-post-item:hover,
+.layout_page>div:first-child:not(.recent-posts):hover,
+.layout_post>#page:hover { /* 注意这里没有包含 .layout_post>#post，因为上面已经单独处理 */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+
+/* 侧边卡片的透明度 - 保持原样或根据需要调整 */
+:root {
+    --card-bg: rgba(248, 239, 239, 0.8);
+}
+
+/* 页脚 - 添加轻微动态模糊 */
+#footer {
+    background: rgba(255, 255, 255, .1); /* 半透明白色背景 */
+    backdrop-filter: blur(3px); /* 默认轻微模糊 */
+    -webkit-backdrop-filter: blur(3px);
+    transition: backdrop-filter 0.5s ease-out; /* 较慢的过渡 */
+}
+
+#footer:hover {
+    backdrop-filter: blur(8px); /* 悬停时略微增加模糊 */
+    -webkit-backdrop-filter: blur(8px);
+}
