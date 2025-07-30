@@ -3,79 +3,148 @@
     display: none;
 }
 
-/* 禁用图片点击,butterfly渲染后会给图片套上fancybox，点开后会造成信笺偏移*/
-.formmain{
+/* 禁用图片点击，butterfly 渲染后会给图片套上 fancybox，点开后会造成信笺偏移 */
+/* 这里的 formmain 可能需要根据实际的 HTML 结构进行调整，如果只是针对图片，建议更精确的选择器 */
+.formmain img { /* 将 pointer-events 应用到 formmain 下的图片 */
     pointer-events: none !important;
 }
-/* top-img隐藏 */
+
+/* top-img 隐藏 */
 #page-header {
     background: transparent !important;
 }
-/* 宽度小于530px隐藏信封 */
+
+/* 宽度小于 530px 隐藏桌面端信封部分，显示移动端信封部分 */
 @media screen and (max-width: 530px) {
     #computer {
         display: none !important;
     }
-}
-
-@media screen and (min-width: 530px) {
-    #mobile {
-        display: none !important;
+    #mobile { /* 确保移动端信封在小屏幕下可见 */
+        display: block !important; /* 假设 mobile 元素默认是 hidden */
+    }
+    /* 针对小屏幕，调整信封和内容的宽度，使其自适应 */
+    #envelope,
+    #maincontent,
+    #beforeimg,
+    #afterimg {
+        width: 100% !important; /* 让宽度自适应父容器 */
+        max-width: 500px; /* 设置一个最大宽度，防止在非常大的手机上过宽 */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    /* 调整信封划出高度在手机端，可能不需要那么高 */
+    #form-wrap:hover {
+        height: auto; /* 让高度自适应内容 */
+        top: 0; /* 在手机端可能不需要向上偏移 */
+    }
+    /* 调整信封图片的位置，使其自适应宽度 */
+    #beforeimg,
+    #afterimg {
+        left: 0 !important; /* 保持左对齐 */
+        width: 100% !important; /* 图片宽度自适应 */
+        background-size: contain; /* 确保背景图片完整显示 */
+        height: auto; /* 高度自适应宽度比例 */
+    }
+    #beforeimg {
+        bottom: 10%; /* 调整相对底部的位置，更具响应性 */
+    }
+    #afterimg {
+        bottom: 0; /* 保持在底部 */
+    }
+    /* 针对手机端，调整 #form-wrap 的默认高度和位置 */
+    #form-wrap {
+        height: auto; /* 让其高度自适应，而不是固定 447px */
+        top: 0;
+        transition: none; /* 在手机端可能不需要复杂的过渡效果 */
+    }
+    /* 如果有图片，确保在小屏幕上也能居中显示 */
+    #article-container img {
+        max-width: 100%; /* 防止图片溢出容器 */
+        height: auto; /* 保持图片比例 */
     }
 }
 
+/* 宽度大于 530px 隐藏移动端信封部分，显示桌面端信封部分 */
+@media screen and (min-width: 531px) { /* 将 530px 改为 531px，避免边界情况冲突 */
+    #mobile {
+        display: none !important;
+    }
+    #computer { /* 确保桌面端信封在大屏幕下可见 */
+        display: block !important;
+    }
+    /* 恢复桌面端信封的特定样式 */
+    #form-wrap {
+        overflow: hidden;
+        height: 447px; /* 桌面端固定高度 */
+        position: relative;
+        top: 0px;
+        transition: all 1s ease-in-out .3s;
+        z-index: 0;
+    }
+    #form-wrap:hover {
+        height: 1050px; /* 桌面端划出高度 */
+        top: -200px; /* 桌面端向上偏移 */
+    }
+    #beforeimg {
+        position: absolute;
+        bottom: 126px;
+        left: 0px;
+        background-repeat: no-repeat;
+        width: 530px;
+        height: 317px;
+        z-index: -100;
+        pointer-events: none;
+    }
+    #afterimg {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        background-repeat: no-repeat;
+        width: 530px;
+        height: 259px;
+        z-index: 100;
+        pointer-events: none;
+    }
+    #envelope {
+        position: relative;
+        overflow: visible;
+        width: 500px;
+        margin: 0px auto;
+        transition: all 1s ease-in-out .3s;
+        padding-top: 200px;
+    }
+    #maincontent {
+        width: 530px;
+        margin: 20px auto 0;
+    }
+}
+
+
 #article-container img {
     margin: 0 auto 0rem;
+    max-width: 100%; /* 确保文章内的图片在任何屏幕尺寸下都不会溢出 */
+    height: auto; /* 保持图片比例 */
 }
 
 #form-wrap {
     overflow: hidden;
-    height: 447px;
+    /* height 和 top 的值已经移动到媒体查询中，以便不同屏幕尺寸有不同表现 */
     position: relative;
-    top: 0px;
-    transition: all 1s ease-in-out .3s;
     z-index: 0;
-}
-/* 调整信封划出高度，换信笺内容以后可在此设置height */
-#form-wrap:hover {
-    height: 1050px;
-    top: -200px;
+    /* transition 在桌面端保留，手机端可能移除以简化效果 */
 }
 
-#beforeimg {
-    position: absolute;
-    bottom: 126px;
-    left: 0px;
-    background-repeat: no-repeat;
-    width: 530px;
-    height: 317px;
-    z-index: -100;
-    pointer-events: none;
-}
-
-#afterimg {
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    background-repeat: no-repeat;
-    width: 530px;
-    height: 259px;
-    z-index: 100;
-    pointer-events: none;
-}
 
 #envelope {
     position: relative;
     overflow: visible;
-    width: 500px;
-    margin: 0px auto;
+    /* width 和 margin 已经移动到媒体查询中 */
     transition: all 1s ease-in-out .3s;
     padding-top: 200px;
 }
 
 #maincontent {
-    width: 530px;
-    margin: 20px auto 0;
+    /* width 和 margin 已经移动到媒体查询中 */
 }
 
 .headerimg {
@@ -86,7 +155,7 @@
 
 .formmain {
     background: white;
-    width: 95%;
+    width: 95%; /* 调整为百分比宽度，更好地适应小屏幕 */
     max-width: 800px;
     margin: auto auto;
     border-radius: 5px;
@@ -132,6 +201,7 @@
     text-align: center;
     color: #999;
 }
+
 /* 夜间模式 */
 [data-theme='dark']
 .formmain {
