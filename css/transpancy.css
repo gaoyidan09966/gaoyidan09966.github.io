@@ -12,12 +12,12 @@
 }
 
 /* 适用于文章页、卡片、最近文章等主要内容区域的渐变和动画效果 */
-.layout_post>#post,
+.layout_post > #post,
 #aside_content .card-widget,
-#recent-posts>.recent-post-item,
-.layout_page>div:first-child:not(.recent-posts),
-.layout_post>#page,
-.read-mode .layout_post>#post {
+#recent-posts > .recent-post-item,
+.layout_page > div:first-child:not(.recent-posts),
+.layout_post > #page,
+.read-mode .layout_post > #post {
     /* 柔和的浅色渐变背景，从左下到右上 */
     background: linear-gradient(135deg, #f8f9fa, #e9ecef, #dee2e6);
     background-size: 300% 300%; /* 扩大渐变区域，以便动画时有足够的空间移动 */
@@ -32,33 +32,30 @@
 }
 
 /* 鼠标悬停时主要内容区域的效果 */
-.layout_post>#post:hover,
+.layout_post > #post:hover,
 #aside_content .card-widget:hover,
-#recent-posts>.recent-post-item:hover,
-.layout_page>div:first-child:not(.recent-posts):hover,
-.layout_post>#page:hover {
+#recent-posts > .recent-post-item:hover,
+.layout_page > div:first-child:not(.recent-posts):hover,
+.layout_post > #page:hover {
     backdrop-filter: blur(12px); /* 悬停时增加模糊度，使背景更柔和 */
     -webkit-backdrop-filter: blur(12px);
     /* 悬停时改变渐变方向，增加视觉变化 */
     background: linear-gradient(45deg, #e9ecef, #dae9f8, #c3ddf7);
-    animation-play-state: running; /* 确保动画在悬停时继续播放 */
+    /* animation-play-state: running; /* 确保动画在悬停时继续播放 - 通常动画默认是运行的，除非被暂停 */
     transform: translateY(-3px); /* 悬停时轻微上浮 */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 增加阴影效果 */
 }
 
-/* 侧边卡片的透明度变量（如果需要，可以继续使用此变量来控制其他元素的透明度） */
+/* 侧边卡片的透明度变量 */
 :root {
     --card-bg: rgba(225, 248, 242, 0.9);
 }
 
-/* 页脚的特殊样式 - 添加更轻微的动态渐变和模糊 */
+/* 修复后的 #footer 样式 */
 #footer {
-    /* 非常透明的白色渐变，营造轻盈感 */
-    background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    background-size: 200% 200%; /* 渐变区域大小 */
-    animation: gradient-animation 25s linear infinite; /* 页脚动画可以更慢，线性过渡 */
-
-    backdrop-filter: blur(3px); /* 默认轻微模糊 */
-    -webkit-backdrop-filter: blur(3px);
-    transition: all 0.5s ease-out; /* 较慢的过渡 */
+    position: relative;
+    /* background-color: $light-blue; /* 如果 $light-blue 是 SCSS/LESS 变量，需要相应地在预处理器中使用或替换为具体颜色值 */
+    background-attachment: scroll;
+    background-position: bottom;
+    background-size: cover;
 }
