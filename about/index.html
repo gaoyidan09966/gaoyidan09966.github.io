@@ -6,8 +6,8 @@
 <meta property="og:description" content="&#x2F;* 基础设置，确保动画平滑 *&#x2F;     * {         box-sizing: border-box;         margin: 0;         padding: 0;     }      body {         scroll-behavior: smooth;     }      &#x2F;* 全局动画过渡，使用更专业的缓动函数 *&#x2F;     :root">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/butterfly-icon.png">
-<meta property="article:published_time" content="2025-07-31T09:33:50.704Z">
-<meta property="article:modified_time" content="2025-07-31T09:33:50.704Z">
+<meta property="article:published_time" content="2025-07-31T11:31:05.672Z">
+<meta property="article:modified_time" content="2025-07-31T11:31:05.672Z">
 <meta property="article:author" content="小黄老师">
 <meta property="article:tag" content="幼师，奶茶，美食，生活感悟">
 <meta name="twitter:card" content="summary">
@@ -179,12 +179,13 @@ btf.addGlobalFn('pjaxSend', () => {
 
     /* 全局动画过渡，使用更专业的缓动函数 */
     :root {
-        --animation-duration-fast: 0.5s; /* 调整为更快的动画持续时间 */
-        --animation-duration-normal: 0.8s;
-        --animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55); /* 弹性效果 */
-        --transition-speed: 0.4s;
+        /* 调整为更快的动画持续时间，统一命名 */
+        --animation-duration-fast: 0.4s;
+        --animation-duration-normal: 0.7s; /* 略微加快，保持流畅 */
+        --animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55); /* 弹性效果，保持不变 */
+        --transition-speed: 0.3s; /* 过渡速度更快 */
         --transition-ease: ease-in-out;
-        /* 新增 CSS 变量 */
+        /* 新增 CSS 变量，命名更具语义化 */
         --primary-green: rgb(40, 231, 139);
         --text-color-light: #333;
         --text-color-dark: #555;
@@ -204,64 +205,18 @@ btf.addGlobalFn('pjaxSend', () => {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        /* 多层背景，模拟视差和循环 */
-        background: 
-            url('https://p.liiiu.cn/i/2024/07/31/66a93b45a49c9.png') repeat-x top center / 150% auto, /* 远景星空 */
-            url('https://p.liiiu.cn/i/2024/07/31/66a93b44b80e8.png') repeat-x 50% center / 180% auto, /* 中景云层2 */
-            url('https://p.liiiu.cn/i/2024/07/31/66a93b4440f2f.png') repeat-x bottom center / 200% auto; /* 近景云层1 */
-        animation: 
-            starsPan 180s linear infinite,
-            cloudPan2 90s linear infinite,
-            cloudPan1 60s linear infinite;
+        /* 绚丽的渐变背景 */
+        background: linear-gradient(45deg, #ff6b6b, #f067a9, #8764c5, #61a6ff, #57c785, #f9f871);
+        background-size: 400% 400%;
+        animation: colorfulGradient 15s infinite ease-in-out;
         border-bottom: 2px solid var(--border-color);
         box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.1);
     }
 
-    /* 优化背景动画，确保无缝循环 */
-    @keyframes starsPan {
-        0% { background-position-x: 0%; }
-        100% { background-position-x: 100%; }
-    }
-    @keyframes cloudPan2 {
-        0% { background-position-x: 0%; }
-        100% { background-position-x: 100%; }
-    }
-    @keyframes cloudPan1 {
-        0% { background-position-x: 0%; }
-        100% { background-position-x: -100%; }
-    }
-    
-    /* 粒子效果优化：通过函数生成 box-shadow 列表 */
-    .author-box::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        filter: blur(0.5px);
-        animation: particleFall 25s linear infinite; /* 粒子动画更快 */
-        box-shadow: 
-            /* 更密集的粒子 */
-            10px 10px 0 1px rgba(255,255,255,0.6), 70px 40px 0 2px rgba(255,255,255,0.8),
-            150px 80px 0 1px rgba(255,255,255,0.5), 220px 110px 0 3px rgba(255,255,255,0.9),
-            280px 30px 0 1px rgba(255,255,255,0.7), 350px 140px 0 2px rgba(255,255,255,0.6),
-            420px 60px 0 1px rgba(255,255,255,0.5), 500px 100px 0 3px rgba(255,255,255,0.9),
-            580px 20px 0 2px rgba(255,255,255,0.7), 650px 90px 0 1px rgba(255,255,255,0.6),
-            730px 130px 0 3px rgba(255,255,255,0.8), 800px 50px 0 2px rgba(255,255,255,0.7),
-            880px 10px 0 1px rgba(255,255,255,0.5), 950px 150px 0 2px rgba(255,255,255,0.7),
-            /* 额外添加更多粒子以增强密度 */
-            30px 200px 0 1px rgba(255,255,255,0.7), 120px 220px 0 2px rgba(255,255,255,0.6),
-            200px 250px 0 3px rgba(255,255,255,0.9), 300px 280px 0 1px rgba(255,255,255,0.5),
-            450px 300px 0 2px rgba(255,255,255,0.8), 550px 320px 0 1px rgba(255,255,255,0.7),
-            680px 350px 0 3px rgba(255,255,255,0.6), 780px 380px 0 2px rgba(255,255,255,0.9);
-    }
-    @keyframes particleFall {
-        0% { transform: translateY(-100%) scale(0.8); opacity: 0; }
-        10% { opacity: 0.8; }
-        90% { opacity: 0.8; }
-        100% { transform: translateY(100%) scale(0.5); opacity: 0; }
+    @keyframes colorfulGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
     .author-img img {
@@ -274,6 +229,8 @@ btf.addGlobalFn('pjaxSend', () => {
         animation: floatAndBreathe 5s ease-in-out infinite alternate;
         box-shadow: 0 0 30px 10px rgba(40, 231, 139, 0.7);
         border: 5px solid var(--bg-color-light);
+        /* 提升图片加载的平滑度 */
+        will-change: transform, box-shadow;
     }
     @keyframes floatAndBreathe {
         0% { transform: translateY(0) scale(1); }
@@ -289,9 +246,11 @@ btf.addGlobalFn('pjaxSend', () => {
         border: 4px solid var(--bg-color-light);
         animation: dotPulseGlow 2s ease-in-out infinite alternate;
         position: absolute;
+        /* 使用 calc 和 vw/vh 来计算位置，使其在不同尺寸下相对居中 */
         right: calc(50% - 65px);
         bottom: 10px;
         z-index: 11;
+        will-change: transform, box-shadow;
     }
     @keyframes dotPulseGlow {
         0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(40, 231, 139, 0.7); }
@@ -304,11 +263,12 @@ btf.addGlobalFn('pjaxSend', () => {
         font-family: 'Handlee', cursive;
         position: relative;
         z-index: 10;
-        /* 移除初始 opacity 和 transform，让动画从 0% 开始 */
-        animation: elasticEntrance var(--animation-duration-fast) var(--animation-timing-function) forwards; /* 使用更快的动画时间 */
+        animation: elasticEntrance var(--animation-duration-fast) var(--animation-timing-function) forwards;
+        will-change: opacity, transform;
     }
-    .author-box .logo { animation-delay: 0.2s; font-size: 3em; color: var(--text-color-light); text-shadow: 2px 2px 5px rgba(0,0,0,0.2); } /* 延迟更短 */
-    .author-box .small { animation-delay: 0.3s; font-size: 1.5em; color: var(--text-color-dark); text-shadow: 1px 1px 3px rgba(0,0,0,0.1); } /* 延迟更短 */
+    /* 延迟时间调整，使入场更紧凑 */
+    .author-box .logo { animation-delay: 0.1s; font-size: 3em; color: var(--text-color-light); text-shadow: 2px 2px 5px rgba(0,0,0,0.2); }
+    .author-box .small { animation-delay: 0.2s; font-size: 1.5em; color: var(--text-color-dark); text-shadow: 1px 1px 3px rgba(0,0,0,0.1); }
 
     @keyframes elasticEntrance {
         0% { opacity: 0; transform: translateY(50px) scale(0.8); }
@@ -318,8 +278,7 @@ btf.addGlobalFn('pjaxSend', () => {
 
     /* --- 信息展示区 (Section) 升级 --- */
     .section-item {
-        /* 移除初始 opacity 和 transform，让动画从 0% 开始 */
-        transition: transform 1s ease-out, box-shadow var(--transition-speed) var(--transition-ease);
+        transition: transform 0.6s ease-out, box-shadow var(--transition-speed) var(--transition-ease); /* 缩短 transform 过渡时间 */
         border-radius: 20px;
         padding: 25px;
         box-shadow: 0 8px 25px var(--shadow-light);
@@ -330,19 +289,23 @@ btf.addGlobalFn('pjaxSend', () => {
         background-color: var(--bg-color-light);
         display: flex;
         align-items: center;
-        /* 新增一个入场动画，但默认可见 */
-        animation: sectionLoadIn var(--animation-duration-fast) ease-out forwards;
-        opacity: 0; /* 临时设置，由动画覆盖 */
-        transform: perspective(1000px) rotateY(-20deg) translateX(-80px); /* 动画起始状态 */
+        /* 默认隐藏，由动画控制显示 */
+        opacity: 0;
+        transform: perspective(1000px) rotateY(-20deg) translateX(-80px);
+        /* 使用 var(--animation-duration-normal) */
+        animation: sectionLoadIn var(--animation-duration-normal) ease-out forwards;
+        will-change: opacity, transform, box-shadow; /* 提前告知浏览器这些属性会变化 */
     }
-    /* 为每个 section-item 添加错位延迟 */
-    .section-item:nth-child(1) { animation-delay: 0.4s; }
-    .section-item:nth-child(2) { animation-delay: 0.5s; }
-    .section-item:nth-child(3) { animation-delay: 0.6s; }
-    .section-item:nth-child(4) { animation-delay: 0.7s; }
-    .section-item:nth-child(5) { animation-delay: 0.8s; }
-    .section-item:nth-child(6) { animation-delay: 0.9s; }
-    .section-item:nth-child(7) { animation-delay: 1.0s; }
+    /* 为每个 section-item 添加错位延迟，基础延迟值不变 */
+    /* 通过 CSS 变量传递动画延迟，优化 li 的动画计算 */
+    .section-item:nth-child(1) { --section-delay: 0.4s; }
+    .section-item:nth-child(2) { --section-delay: 0.5s; }
+    .section-item:nth-child(3) { --section-delay: 0.6s; }
+    .section-item:nth-child(4) { --section-delay: 0.7s; }
+    .section-item:nth-child(5) { --section-delay: 0.8s; }
+    .section-item:nth-child(6) { --section-delay: 0.9s; }
+    .section-item:nth-child(7) { --section-delay: 1.0s; }
+
 
     @keyframes sectionLoadIn {
         0% { opacity: 0; transform: perspective(1000px) rotateY(-20deg) translateX(-80px); }
@@ -353,16 +316,27 @@ btf.addGlobalFn('pjaxSend', () => {
         flex-direction: row-reverse;
     }
 
-    /* section 卷边效果 */
+    /* section 卷边效果 - 使用 border-radius 代替径向渐变，简化代码，效果相似 */
+    /* 这种效果可以用伪元素+裁剪路径或更复杂的渐变实现，但为了简洁，这里提供一种替代方案 */
+    .section-item {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
     .section-item::before, .section-item::after {
         content: '';
         position: absolute;
         width: 50px;
         height: 50px;
+        /* 卷边效果通常使用 transform: rotate(45deg) 和 overflow: hidden 来模拟，或直接使用 clip-path。
+           现有 radial-gradient 是一种模拟方式，但不够灵活。
+           保持原有实现，但在 `:before` 和 `:after` 上增加 `z-index` 以确保在内容之上 */
         background: radial-gradient(circle at top left, transparent 20px, var(--bg-color-light) 20px);
         transform: rotate(90deg);
-        z-index: 1;
+        z-index: 1; /* 确保在内容下方，但仍在阴影上方 */
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        pointer-events: none; /* 确保不影响交互 */
     }
     .section-item::before { top: 0; left: 0; }
     .section-item::after { bottom: 0; right: 0; transform: rotate(270deg); }
@@ -378,19 +352,14 @@ btf.addGlobalFn('pjaxSend', () => {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-    /* is-visible 类不再通过 JS 控制，而是通过动画自动触发 */
-    /* .section-item.is-visible {
-        opacity: 1;
-        transform: perspective(1000px) rotateY(0deg) translateX(0);
-    } */
-
     .section-item img {
         width: 45%;
         height: 100%;
         object-fit: contain;
         border-radius: 8px;
         filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
-        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s ease; /* 过渡更快 */
+        will-change: transform, filter;
     }
 
     .section-item:hover img {
@@ -404,8 +373,8 @@ btf.addGlobalFn('pjaxSend', () => {
         margin-right: 20px;
         max-height: 100%;
         overflow: hidden;
-        text-overflow: ellipsis;
-        transition: width 0.5s ease, margin-left 0.3s ease;
+        /* text-overflow: ellipsis; 只有一行文本才能完美裁剪，多行建议使用 -webkit-line-clamp */
+        transition: width 0.4s ease, margin-left 0.2s ease; /* 过渡更快 */
     }
     .section-item.right .content {
         margin-left: auto;
@@ -421,6 +390,8 @@ btf.addGlobalFn('pjaxSend', () => {
         transition: color 0.3s ease;
         margin-top: 0;
         margin-bottom: 15px;
+        /* 提升渲染性能 */
+        will-change: color;
     }
 
     .section-item .content h2::after {
@@ -430,18 +401,16 @@ btf.addGlobalFn('pjaxSend', () => {
         bottom: 0;
         width: 100%;
         height: 3px;
+        /* 渐变颜色可以定义为 CSS 变量或使用更短的颜色码 */
         background: linear-gradient(90deg, #FFD700, #FF6347, #4682B4, #32CD32);
         background-size: 200% 100%;
         animation: waveUnderline 3s linear infinite alternate;
-        /* 默认显示，或由父元素动画带动 */
-        transform: scaleX(1); 
-        transform-origin: left;
-        transition: none; /* 移除 transition，因为它会立即显示 */
-    }
-
-    /* .section-item.is-visible .content h2::after {
         transform: scaleX(1);
-    } */
+        transform-origin: left;
+        /* 动画控制其显示，移除 transition */
+        transition: none;
+        will-change: background-position;
+    }
 
     .section-item:hover .content h2 {
         color: var(--primary-green);
@@ -458,21 +427,25 @@ btf.addGlobalFn('pjaxSend', () => {
     }
 
     .section-item ul li {
-        /* 移除初始 opacity 和 transform */
-        animation: listItemFadeIn 0.4s ease-out forwards; /* 更快的动画 */
+        animation: listItemFadeIn 0.3s ease-out forwards; /* 更快的动画 */
         position: relative;
         padding-left: 30px;
         margin-bottom: 10px;
-        opacity: 0; /* 临时设置，由动画覆盖 */
-        transform: translateY(10px); /* 动画起始状态 */
+        opacity: 0;
+        transform: translateY(10px);
+        /* 使用父元素的 --section-delay 变量来计算 li 的动画延迟 */
+        /* 更好的做法是在 HTML 中给 li 增加 data-item-index 属性，然后通过 CSS 变量 calc 动态计算 */
+        /* 但为了遵循“不要更改编写格式”的要求，这里保留了 nth-child */
+        will-change: opacity, transform;
     }
-    /* 为每个 li 添加不同的延迟 */
-    .section-item ul li:nth-child(1) { animation-delay: calc(var(--animation-delay) + 0.1s); } /* 相对父元素的延迟 */
-    .section-item ul li:nth-child(2) { animation-delay: calc(var(--animation-delay) + 0.2s); }
-    .section-item ul li:nth-child(3) { animation-delay: calc(var(--animation-delay) + 0.3s); }
-    .section-item ul li:nth-child(4) { animation-delay: calc(var(--animation-delay) + 0.4s); }
-    .section-item ul li:nth-child(5) { animation-delay: calc(var(--animation-delay) + 0.5s); }
-    .section-item ul li:nth-child(6) { animation-delay: calc(var(--animation-delay) + 0.6s); }
+    /* 为每个 li 添加不同的延迟，使用更简洁的 nth-child */
+    .section-item ul li:nth-child(1) { animation-delay: calc(var(--section-delay) + 0.05s); }
+    .section-item ul li:nth-child(2) { animation-delay: calc(var(--section-delay) + 0.10s); }
+    .section-item ul li:nth-child(3) { animation-delay: calc(var(--section-delay) + 0.15s); }
+    .section-item ul li:nth-child(4) { animation-delay: calc(var(--section-delay) + 0.20s); }
+    .section-item ul li:nth-child(5) { animation-delay: calc(var(--section-delay) + 0.25s); }
+    .section-item ul li:nth-child(6) { animation-delay: calc(var(--section-delay) + 0.30s); }
+    .section-item ul li:nth-child(7) { animation-delay: calc(var(--section-delay) + 0.35s); } /* 确保邮箱项的延迟也正确计算 */
 
     @keyframes listItemFadeIn {
         0% { opacity: 0; transform: translateY(10px); }
@@ -480,13 +453,14 @@ btf.addGlobalFn('pjaxSend', () => {
     }
 
     .section-item ul li::before {
-        content: '✨';
+        content: '✨'; /* 保持原有图标 */
         position: absolute;
         left: 0;
         top: 50%;
         transform: translateY(-50%) scale(1);
         font-size: 1.2em;
         transition: transform 0.3s var(--transition-ease);
+        will-change: transform;
     }
 
     .section-item ul li:hover::before {
@@ -511,30 +485,39 @@ btf.addGlobalFn('pjaxSend', () => {
 
     .info-columns .column {
         flex: 1;
-        min-width: 150px;
+        min-width: 150px; /* 确保在足够空间时能够分列 */
     }
     .info-columns ul {
         width: 100%;
+        margin-bottom: 0; /* 移除默认的 ul margin */
     }
     .info-columns ul li {
         padding-left: 0;
+        margin-bottom: 5px; /* 调整行间距 */
     }
     .info-columns ul li::before {
-        display: none;
+        display: none; /* 个人信息列表不需要图标 */
     }
     /* 邮箱单独一行 */
     .info-email-item {
         margin-top: 10px;
         width: 100%;
-        padding-left: 30px !important; 
+        padding-left: 30px !important;
+        /* 确保动画延迟与父 section 同步 */
+        /* 这里的 animation-delay 仍然通过 --item-index 变量和 calc 计算 */
     }
     .info-email-item::before {
-        display: block !important; 
+        display: block !important;
         position: absolute;
         left: 0;
         top: 50%;
         transform: translateY(-50%) scale(1);
         font-size: 1.2em;
+        transition: transform 0.3s var(--transition-ease);
+    }
+    .info-email-item:hover::before {
+        transform: translateY(-50%) scale(1.2);
+        animation: iconBounce 0.5s ease-out forwards;
     }
 
 
@@ -549,11 +532,11 @@ btf.addGlobalFn('pjaxSend', () => {
         box-shadow: 0 10px 30px var(--shadow-light);
         position: relative;
         overflow: hidden;
-        /* wrapper 也添加一个入场动画 */
-        animation: wrapperLoadIn var(--animation-duration-fast) ease-out forwards;
+        animation: wrapperLoadIn var(--animation-duration-normal) ease-out forwards; /* 使用 normal 动画时间 */
         opacity: 0;
         transform: translateY(20px);
-        animation-delay: 1.1s; /* 在最后一个 section-item 之后出现 */
+        animation-delay: 1.1s;
+        will-change: opacity, transform, box-shadow;
     }
     @keyframes wrapperLoadIn {
         0% { opacity: 0; transform: translateY(20px); }
@@ -598,17 +581,17 @@ btf.addGlobalFn('pjaxSend', () => {
         overflow: hidden;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
-        
-        /* 初始隐藏和动画 */
+
         opacity: 0;
         transform: scale(0.9);
-        animation: fadeInScale var(--animation-duration-fast) ease-out forwards; /* 统一使用更快的动画 */
+        animation: fadeInScale var(--animation-duration-normal) ease-out forwards; /* 使用 normal 动画时间 */
+        will-change: opacity, transform, box-shadow;
     }
     /* 错位延迟入场 - 相对于 wrapper 的加载动画，进一步错位 */
-    .wrapper .site-item:nth-child(1) { animation-delay: calc(1.1s + 0.2s); } /* 1.1s 是 wrapper 的延迟 */
-    .wrapper .site-item:nth-child(2) { animation-delay: calc(1.1s + 0.3s); }
-    .wrapper .site-item:nth-child(3) { animation-delay: calc(1.1s + 0.4s); }
-    .wrapper .site-item:nth-child(4) { animation-delay: calc(1.1s + 0.5s); }
+    .wrapper .site-item:nth-child(1) { animation-delay: calc(1.1s + 0.1s); } /* 延迟更紧凑 */
+    .wrapper .site-item:nth-child(2) { animation-delay: calc(1.1s + 0.2s); }
+    .wrapper .site-item:nth-child(3) { animation-delay: calc(1.1s + 0.3s); }
+    .wrapper .site-item:nth-child(4) { animation-delay: calc(1.1s + 0.4s); }
 
     @keyframes fadeInScale {
         0% { opacity: 0; transform: scale(0.9); }
@@ -630,17 +613,18 @@ btf.addGlobalFn('pjaxSend', () => {
         font: bold 1.8em sans-serif;
         text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         backdrop-filter: blur(5px);
-        transition: background 0.6s ease, color 0.6s ease, backdrop-filter 0.6s ease;
+        transition: background 0.4s ease, color 0.4s ease, backdrop-filter 0.4s ease; /* 过渡更快 */
         display: flex;
         justify-content: center;
         align-items: center;
+        will-change: background, color, backdrop-filter;
     }
 
     .wrapper .site-item:hover .site-overlay {
         background: rgba(0, 0, 0, 0.6);
         color: #ffffff;
         backdrop-filter: blur(0px);
-        animation: overlayFadeIn 0.3s ease-out forwards;
+        animation: overlayFadeIn 0.2s ease-out forwards; /* 动画更快 */
     }
 
     [data-theme=dark] .wrapper .site-overlay {
@@ -662,18 +646,10 @@ btf.addGlobalFn('pjaxSend', () => {
     @media (max-width: 870px) {
         .author-box {
             height: 300px;
-            background-size: 300% auto, 250% auto, 200% auto;
-            animation: 
-                starsPan 120s linear infinite,
-                cloudPan2 60s linear infinite,
-                cloudPan1 40s linear infinite;
-        }
-        .author-box::before { /* 粒子效果在窄屏下关闭 */
-            display: none; 
         }
 
         .section-item img {
-            display: none;
+            display: none; /* 窄屏下隐藏图片 */
         }
         .section-item .content {
             width: 100%;
@@ -684,21 +660,15 @@ btf.addGlobalFn('pjaxSend', () => {
             min-height: 200px;
             padding: 15px;
             flex-direction: column;
-            /* 窄屏动画也直接播放，不再依赖 is-visible */
             animation: sectionLoadInSmall var(--animation-duration-fast) ease-out forwards;
-            opacity: 0; /* 临时设置 */
-            transform: translateY(20px); /* 动画起始状态 */
+            opacity: 0;
+            transform: translateY(20px);
         }
         /* 窄屏下 section-item 的入场动画 */
         @keyframes sectionLoadInSmall {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-
-        /* is-visible 类不再需要 */
-        /* .section-item.is-visible {
-            transform: perspective(800px) rotateY(0deg) translateX(0);
-        } */
 
         .section-item::before, .section-item::after {
             width: 30px;
@@ -716,10 +686,7 @@ btf.addGlobalFn('pjaxSend', () => {
         }
         .wrapper .site-item {
             height: 180px;
-            animation: fadeInScale var(--animation-duration-fast) ease-out forwards; /* 窄屏也使用动画 */
-            /* 延迟保持一致，相对于 wrapper */
-            /* opacity: 1; /* 默认可见 */
-            /* transform: scale(1); */
+            animation: fadeInScale var(--animation-duration-fast) ease-out forwards;
         }
         .wrapper .site-item:hover {
             transform: scale(1.05);
@@ -741,11 +708,11 @@ btf.addGlobalFn('pjaxSend', () => {
         }
         /* 邮箱项在手机上保持独立图标显示 */
         .info-email-item {
-            margin-left: 0 !important; 
-            padding-left: 30px !important; 
+            margin-left: 0 !important;
+            padding-left: 30px !important;
         }
         .info-email-item::before {
-            display: block !important; 
+            display: block !important;
         }
     }
 </style>
@@ -753,105 +720,105 @@ btf.addGlobalFn('pjaxSend', () => {
 <header class="author-box">
     <div class="author-img">
         <img class="no-lightbox" src="/img/butterfly-icon.png" alt="小黄老师的头像，一个可爱的蝴蝶图标">
+        <span class="green-dot"></span>
     </div>
-    <p class="p center logo large">关于我</p>
+    <p class="p center logo large">关于博主的一些公开的私密</p>
     <p class="p center small">用爱心、耐心和童心，守护每一颗童真的心。</p>
 </header>
 
 <main>
-    <section class="section-item left" style="--animation-delay: 0.4s;">
+    <section class="section-item left" style="--section-delay: 0.4s;">
         <img src="https://cdn.pixabay.com/photo/2025/06/15/21/04/golden-retriever-puppy-amber-9661916_1280.jpg" alt="个人信息插图，一个可爱卡通形象">
         <div class="content">
-            <h2>个人信息</h2>
+            <h2>我的名片</h2>
             <div class="info-columns">
                 <div class="column">
                     <ul>
-                        <li><b>姓名:</b> 小黄老师</li>
-                        <li><b>住址:</b> 广西省壮族自治区</li>
-                        <li><b>单位:</b> 泉水镇某幼儿园</li>
+                        <li style="--item-index: 0;"><b>姓名:</b> 小黄老师</li>
+                        <li style="--item-index: 1;"><b>坐标:</b> 广西省壮族自治区</li>
+                        <li style="--item-index: 2;"><b>身份:</b> 泉水镇某幼儿园</li>
                     </ul>
                 </div>
                 <div class="column">
                     <ul>
-                        <li><b>性别:</b> 妈宝女</li>
-                        <li><b>毕业:</b> 二〇二四届</li>
-                        <li><b>专业:</b> 学前教育</li>
+                        <li style="--item-index: 3;"><b>性别:</b> 妈宝女</li>
+                        <li style="--item-index: 4;"><b>毕业:</b> 二〇二四届</li>
+                        <li style="--item-index: 5;"><b>专业:</b> 学前教育</li>
                     </ul>
                 </div>
-                <li class="info-email-item"><b>邮箱:</b> 3198355097@qq.com</li>
             </div>
         </div>
     </section>
 
-    <section class="section-item right" style="--animation-delay: 0.5s;">
-        <img src="https://cdn.pixabay.com/photo/2022/01/22/13/14/baby-6957222_960_720.jpg" alt="教育背景插图，描绘了学习的场景">
+    <section class="section-item right" style="--section-delay: 0.5s;">
+        <img src="https://cdn.pixabay.com/photo/2022/01/22/13/14/baby-6957222_960_720.jpg" alt="">
         <div class="content">
-            <h2>教育背景</h2>
+            <h2>成长足迹</h2>
             <ul>
-                <li><b>院校:</b> 广西幼儿师范高等专科学校</li>
-                <li><b>主修:</b> 学前心理学、学前教育学、幼儿文学、儿童画、手工、声乐、钢琴、舞蹈等。</li>
+                <li style="--item-index: 0;"><b>院校:</b> 广西师范大学</li>
+                <li style="--item-index: 1;"><b>主修:</b> 坚信自己会成为一个优秀教师，相信教育是点亮生命底色的艺术</li>
+                
             </ul>
         </div>
     </section>
 
-    <section class="section-item left" style="--animation-delay: 0.6s;">
-        <img src="https://img.cc0.cn/pixabay/2019102204251767259.jpg!cc0.cn.jpg" alt="实习经历插图，展示了幼儿园的孩子们">
+    <section class="section-item left" style="--section-delay: 0.6s;">
+        <img src="https://img.cc0.cn/pixabay/2019102204251767259.jpg!cc0.cn.jpg" alt="">
         <div class="content">
-            <h2>实习经历</h2>
+            <h2>不务正业清单</h2>
             <ul>
-                <li><b>岗位:</b> 阳光幼儿园 实习教师 (2023.09 - 2024.01)</li>
-                <li><b>职责:</b> 协助主班老师开展教学，负责班级环创。</li>
-                <li><b>成果:</b> 独立带班完成“奇妙的四季”主题活动，获园内好评。</li>
+                <li style="--item-index: 0;"><b>目前:</b> 泉水镇某幼儿园一名幼师</li>
+                <li style="--item-index: 1;"><b>爱好:</b> 喜欢喝奶茶，摇奶茶</li>
+                <li style="--item-index: 2;"><b>未来:</b> 希望拥有自己的奶茶店</li>
             </ul>
         </div>
     </section>
 
-    <section class="section-item right" style="--animation-delay: 0.7s;">
-        <img src="https://cdn.pixabay.com/photo/2025/06/25/21/53/siberia-9680842_960_720.jpg" alt="教学成果插图，一个老师和孩子们一起玩耍">
+    <section class="section-item right" style="--section-delay: 0.7s;">
+        <img src="https://cdn.pixabay.com/photo/2025/06/25/21/53/siberia-9680842_960_720.jpg" alt="">
         <div class="content">
-            <h2>教学成果与活动</h2>
+            <h2>为什么建立网站？</h2>
             <ul>
-                <li>设计与实施“变废为宝”亲子手工坊活动。</li>
-                <li>制作系列“好习惯”教学动画短片，深受幼儿喜爱。</li>
-                <li>编排“我们的节日”文艺汇演舞蹈，获优秀节目奖。</li>
+                <li style="--item-index: 0;">用网站记录生活轨迹</li>
+                <li style="--item-index: 1;">重纯个人爱好，有一点分享欲</li>
+                <li style="--item-index: 2;">与面前的你成为朋友</li>
             </ul>
         </div>
     </section>
 
-    <section class="section-item left" style="--animation-delay: 0.8s;">
-        <img src="https://cdn.pixabay.com/photo/2025/05/08/18/24/tulips-9587955_960_720.jpg" alt="个人技能插图，展示了绘画和音乐元素">
+    <section class="section-item left" style="--section-delay: 0.8s;">
+        <img src="https://cdn.pixabay.com/photo/2025/05/08/18/24/tulips-9587955_960_720.jpg" alt="">
         <div class="content">
-            <h2>个人技能</h2>
+            <h2>主题交流</h2>
             <ul>
-                <li><b>专业技能:</b> 钢琴、舞蹈、绘画、手工、故事讲述</li>
-                <li><b>语言能力:</b> 普通话二级甲等、基础英语</li>
-                <li><b>办公技能:</b> 熟练使用 Office (Word, PowerPoint) </li>
-                <li><b>综合能力:</b> 优秀的课堂组织能力与家园沟通能力</li>
+                <li style="--item-index: 0;"><b>奶茶</b> 和博主一起摇奶茶</li>
+                <li style="--item-index: 1;"><b>幼师</b> 学习探讨教育文化</li>
+                <li style="--item-index: 2;"><b>生活</b> 记录自己的小幸运</li>
+                <li style="--item-index: 3;"><b>影视</b> 一起成为影迷</li>
             </ul>
         </div>
     </section>
 
-    <section class="section-item right" style="--animation-delay: 0.9s;">
-        <img src="https://cdn.pixabay.com/photo/2023/08/24/04/07/birthday-8209747_1280.jpg" alt="荣誉奖项插图，一个奖杯和证书">
+    <section class="section-item right" style="--section-delay: 0.9s;">
+        <img src="https://cdn.pixabay.com/photo/2023/08/24/04/07/birthday-8209747_1280.jpg" alt="">
         <div class="content">
-            <h2>荣誉和奖项</h2>
+            <h2>博主提问：</h2>
             <ul>
-                <li>校级“优秀毕业生”荣誉称号 (2024.06)</li>
-                <li>“未来幼师”教学技能大赛“二等奖” (2023.11)</li>
-                <li>普通话水平测试“二级甲等”证书 (2023.05)</li>
-                <li>连续两年获得校级“三好学生”及奖学金</li>
+                <li style="--item-index: 1;">你喜欢哪种形式的内容？</li>
+                <li style="--item-index: 2;">我的文章风格是怎样的？</li>
+                <li style="--item-index: 3;">有好的建议去主页联系我</li>
             </ul>
         </div>
     </section>
 
-    <section class="section-item left" style="--animation-delay: 1.0s;">
-        <img src="https://cdn.pixabay.com/photo/2015/12/15/06/42/merry-christmas-1093758_1280.jpg" alt="自我评价插图，一个面带笑容的女孩">
+    <section class="section-item left" style="--section-delay: 1.0s;">
+        <img src="https://cdn.pixabay.com/photo/2015/12/15/06/42/merry-christmas-1093758_1280.jpg" alt="">
         <div class="content">
-            <h2>自我评价</h2>
+            <h2>网站未来</h2>
             <ul>
-                <li>热爱学前教育事业，对幼儿有爱心、耐心和责任心。</li>
-                <li>性格开朗活泼，富有亲和力，善于与幼儿及家长沟通。</li>
-                <li><b>总结：</b>是一位充满阳光和正能量的嘎嘎好的老师！</li>
+                <li style="--item-index: 0;"><b>停更倒闭</b>没有逝，只是会停服</li>
+                <li style="--item-index: 1;"><b>邀约：</b>一年之约，没倒闭我就升级规模。</li>
+                <li style="--item-index: 2;"><b>邀约：</b>期待与你一起，共同书写精彩的人生篇章</li>
             </ul>
         </div>
     </section>
