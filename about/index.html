@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>关于我的一些公开的私密资料…… | 小黄老师の后花园💞</title><meta name="author" content="小黄老师"><meta name="copyright" content="小黄老师"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="&#x2F;* 基础设置，确保动画平滑 *&#x2F;     * {         box-sizing: border-box;         margin: 0;         padding: 0;     }      body {         &#x2F;* 平滑滚动 *&#x2F;         scroll-behavior: smooth;     }      &#x2F;* 全局动画过渡，使用更专">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>关于我的一些公开的私密资料…… | 小黄老师の后花园💞</title><meta name="author" content="小黄老师"><meta name="copyright" content="小黄老师"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="&#x2F;* 基础设置，确保动画平滑 *&#x2F;     * {         box-sizing: border-box;         margin: 0;         padding: 0;     }      body {         scroll-behavior: smooth;     }      &#x2F;* 全局动画过渡，使用更专业的缓动函数 *&#x2F;     :root">
 <meta property="og:type" content="website">
 <meta property="og:title" content="关于我的一些公开的私密资料……">
 <meta property="og:url" content="http://example.com/about/index.html">
 <meta property="og:site_name" content="小黄老师の后花园💞">
-<meta property="og:description" content="&#x2F;* 基础设置，确保动画平滑 *&#x2F;     * {         box-sizing: border-box;         margin: 0;         padding: 0;     }      body {         &#x2F;* 平滑滚动 *&#x2F;         scroll-behavior: smooth;     }      &#x2F;* 全局动画过渡，使用更专">
+<meta property="og:description" content="&#x2F;* 基础设置，确保动画平滑 *&#x2F;     * {         box-sizing: border-box;         margin: 0;         padding: 0;     }      body {         scroll-behavior: smooth;     }      &#x2F;* 全局动画过渡，使用更专业的缓动函数 *&#x2F;     :root">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/butterfly-icon.png">
-<meta property="article:published_time" content="2025-07-31T07:37:47.650Z">
-<meta property="article:modified_time" content="2025-07-31T07:37:47.650Z">
+<meta property="article:published_time" content="2025-07-31T08:43:15.685Z">
+<meta property="article:modified_time" content="2025-07-31T08:43:15.685Z">
 <meta property="article:author" content="小黄老师">
 <meta property="article:tag" content="幼师，奶茶，美食，生活感悟">
 <meta name="twitter:card" content="summary">
@@ -174,7 +174,6 @@ btf.addGlobalFn('pjaxSend', () => {
     }
 
     body {
-        /* 平滑滚动 */
         scroll-behavior: smooth;
     }
 
@@ -184,19 +183,27 @@ btf.addGlobalFn('pjaxSend', () => {
         --animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55); /* 弹性效果 */
         --transition-speed: 0.4s;
         --transition-ease: ease-in-out;
+        /* 新增 CSS 变量 */
+        --primary-green: rgb(40, 231, 139);
+        --text-color-light: #333;
+        --text-color-dark: #555;
+        --bg-color-light: white;
+        --bg-color-dark: #2c2c2c;
+        --shadow-light: rgba(0, 0, 0, 0.15);
+        --shadow-dark: rgba(0, 0, 0, 0.4);
+        --border-color: #ddd;
     }
 
     /* --- 顶部引言区 (Author Box) 升级 --- */
     .author-box {
         position: relative;
-        overflow: hidden; /* 确保背景和粒子不溢出 */
-        height: 400px; /* 增加高度以展示更多背景效果 */
+        overflow: hidden;
+        height: 400px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         /* 多层背景，模拟视差和循环 */
-        /* 请替换为你的实际图片 URL */
         background: 
             url('https://p.liiiu.cn/i/2024/07/31/66a93b45a49c9.png') repeat-x top center / 150% auto, /* 远景星空 */
             url('https://p.liiiu.cn/i/2024/07/31/66a93b44b80e8.png') repeat-x 50% center / 180% auto, /* 中景云层2 */
@@ -205,24 +212,25 @@ btf.addGlobalFn('pjaxSend', () => {
             starsPan 180s linear infinite,
             cloudPan2 90s linear infinite,
             cloudPan1 60s linear infinite;
-        border-bottom: 2px solid #ddd;
-        box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.1); /* 底部内阴影增加层次 */
+        border-bottom: 2px solid var(--border-color);
+        box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.1);
     }
 
+    /* 优化背景动画，确保无缝循环 */
     @keyframes starsPan {
-        0% { background-position: 0% top, 0% 50%, 0% bottom; }
-        100% { background-position: 100% top, 100% 50%, 100% bottom; }
+        0% { background-position-x: 0%; }
+        100% { background-position-x: 100%; }
     }
-    @keyframes cloudPan2 { /* 单独控制每层云 */
+    @keyframes cloudPan2 {
         0% { background-position-x: 0%; }
         100% { background-position-x: 100%; }
     }
     @keyframes cloudPan1 {
         0% { background-position-x: 0%; }
-        100% { background-position-x: -100%; } /* 反向移动 */
+        100% { background-position-x: -100%; }
     }
     
-    /* 粒子效果（使用 box-shadow 模拟），增加更多粒子 */
+    /* 粒子效果优化：通过函数生成 box-shadow 列表 */
     .author-box::before {
         content: '';
         position: absolute;
@@ -230,23 +238,29 @@ btf.addGlobalFn('pjaxSend', () => {
         left: 0;
         width: 100%;
         height: 100%;
-        /* 创建随机粒子效果，调整颜色和大小 */
+        pointer-events: none;
+        filter: blur(0.5px);
+        animation: particleFall 30s linear infinite;
+        /* 使用 JavaScript 动态生成或在这里手动生成更多 */
         box-shadow: 
+            /* 更密集的粒子 */
             10px 10px 0 1px rgba(255,255,255,0.6), 70px 40px 0 2px rgba(255,255,255,0.8),
             150px 80px 0 1px rgba(255,255,255,0.5), 220px 110px 0 3px rgba(255,255,255,0.9),
             280px 30px 0 1px rgba(255,255,255,0.7), 350px 140px 0 2px rgba(255,255,255,0.6),
             420px 60px 0 1px rgba(255,255,255,0.5), 500px 100px 0 3px rgba(255,255,255,0.9),
             580px 20px 0 2px rgba(255,255,255,0.7), 650px 90px 0 1px rgba(255,255,255,0.6),
             730px 130px 0 3px rgba(255,255,255,0.8), 800px 50px 0 2px rgba(255,255,255,0.7),
-            880px 10px 0 1px rgba(255,255,255,0.5), 950px 150px 0 2px rgba(255,255,255,0.7);
-        animation: particleFall 30s linear infinite; /* 粒子飘落动画，更快些 */
-        filter: blur(0.5px); /* 轻微模糊 */
-        pointer-events: none; /* 不影响鼠标事件 */
+            880px 10px 0 1px rgba(255,255,255,0.5), 950px 150px 0 2px rgba(255,255,255,0.7),
+            /* 额外添加更多粒子以增强密度 */
+            30px 200px 0 1px rgba(255,255,255,0.7), 120px 220px 0 2px rgba(255,255,255,0.6),
+            200px 250px 0 3px rgba(255,255,255,0.9), 300px 280px 0 1px rgba(255,255,255,0.5),
+            450px 300px 0 2px rgba(255,255,255,0.8), 550px 320px 0 1px rgba(255,255,255,0.7),
+            680px 350px 0 3px rgba(255,255,255,0.6), 780px 380px 0 2px rgba(255,255,255,0.9);
     }
     @keyframes particleFall {
         0% { transform: translateY(-100%) scale(0.8); opacity: 0; }
-        10% { opacity: 0.8; } /* 更快出现 */
-        90% { opacity: 0.8; } /* 保持可见 */
+        10% { opacity: 0.8; }
+        90% { opacity: 0.8; }
         100% { transform: translateY(100%) scale(0.5); opacity: 0; }
     }
 
@@ -257,9 +271,9 @@ btf.addGlobalFn('pjaxSend', () => {
         margin-bottom: 10px;
         position: relative;
         z-index: 10;
-        animation: floatAndBreathe 5s ease-in-out infinite alternate; /* 浮动加呼吸 */
-        box-shadow: 0 0 30px 10px rgba(40, 231, 139, 0.7); /* 更强的光晕 */
-        border: 5px solid white; /* 更粗的描边 */
+        animation: floatAndBreathe 5s ease-in-out infinite alternate;
+        box-shadow: 0 0 30px 10px rgba(40, 231, 139, 0.7);
+        border: 5px solid var(--bg-color-light);
     }
     @keyframes floatAndBreathe {
         0% { transform: translateY(0) scale(1); }
@@ -268,16 +282,16 @@ btf.addGlobalFn('pjaxSend', () => {
     }
 
     .green-dot {
-        width: 25px; /* 稍微大一点 */
+        width: 25px;
         height: 25px;
-        background-color: rgb(40, 231, 139);
+        background-color: var(--primary-green);
         border-radius: 50%;
-        border: 4px solid white; /* 粗描边 */
-        animation: dotPulseGlow 2s ease-in-out infinite alternate; /* 脉冲发光 */
-        position: absolute; /* 确保位置正确 */
-        right: calc(50% - 65px); /* 微调位置 */
-        bottom: 10px; /* 微调位置 */
-        z-index: 11; /* 在头像上方 */
+        border: 4px solid var(--bg-color-light);
+        animation: dotPulseGlow 2s ease-in-out infinite alternate;
+        position: absolute;
+        right: calc(50% - 65px);
+        bottom: 10px;
+        z-index: 11;
     }
     @keyframes dotPulseGlow {
         0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(40, 231, 139, 0.7); }
@@ -287,41 +301,41 @@ btf.addGlobalFn('pjaxSend', () => {
 
     .author-box .logo,
     .author-box .small {
-        font-family: 'Handlee', cursive; /* 尝试手写字体 */
+        font-family: 'Handlee', cursive;
         position: relative;
         z-index: 10;
-        opacity: 0; /* 初始隐藏 */
-        transform: translateY(20px) scale(0.8); /* 初始位置和大小 */
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
         animation: elasticEntrance var(--animation-duration) var(--animation-timing-function) forwards;
     }
-    .author-box .logo { animation-delay: 1.0s; font-size: 3em; color: #333; text-shadow: 2px 2px 5px rgba(0,0,0,0.2); }
-    .author-box .small { animation-delay: 1.2s; font-size: 1.5em; color: #555; text-shadow: 1px 1px 3px rgba(0,0,0,0.1); }
+    .author-box .logo { animation-delay: 1.0s; font-size: 3em; color: var(--text-color-light); text-shadow: 2px 2px 5px rgba(0,0,0,0.2); }
+    .author-box .small { animation-delay: 1.2s; font-size: 1.5em; color: var(--text-color-dark); text-shadow: 1px 1px 3px rgba(0,0,0,0.1); }
 
     @keyframes elasticEntrance {
         0% { opacity: 0; transform: translateY(50px) scale(0.8); }
-        50% { opacity: 1; transform: translateY(-15px) scale(1.05); } /* 稍微超出更多 */
+        50% { opacity: 1; transform: translateY(-15px) scale(1.05); }
         100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* --- 信息展示区 (Section) 升级 --- */
     .section-item {
-        opacity: 0; /* 初始隐藏 */
-        transform: perspective(1000px) rotateY(-20deg) translateX(-80px); /* 3D 翻转入场初始状态，微调 */
+        opacity: 0;
+        transform: perspective(1000px) rotateY(-20deg) translateX(-80px);
         transition: opacity 1s ease-out, transform 1s ease-out, box-shadow var(--transition-speed) var(--transition-ease);
-        border-radius: 20px; /* 更大的圆角 */
-        padding: 25px; /* 增加内边距 */
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* 更强的阴影 */
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 8px 25px var(--shadow-light);
         position: relative;
-        overflow: hidden; /* 防止内容溢出 */
-        margin: 20px 10px 0 10px; /* 保持原有 margin */
-        height: 250px; /* 保持原有高度 */
-        background-color: white; /* 保持原有背景色 */
-        display: flex; /* Flexbox 布局 */
-        align-items: center; /* 垂直居中 */
+        overflow: hidden;
+        margin: 20px 10px 0 10px;
+        height: 250px;
+        background-color: var(--bg-color-light);
+        display: flex;
+        align-items: center;
     }
 
     .section-item.right {
-        flex-direction: row-reverse; /* 右侧布局图片在右 */
+        flex-direction: row-reverse;
     }
 
     /* section 卷边效果 */
@@ -330,68 +344,68 @@ btf.addGlobalFn('pjaxSend', () => {
         position: absolute;
         width: 50px;
         height: 50px;
-        background: radial-gradient(circle at top left, transparent 20px, white 20px);
+        background: radial-gradient(circle at top left, transparent 20px, var(--bg-color-light) 20px);
         transform: rotate(90deg);
         z-index: 1;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
     .section-item::before { top: 0; left: 0; }
-    .section-item::after { bottom: 0; right: 0; transform: rotate(270deg); } /* 右下角 */
-    .section-item.right::before { transform: rotate(180deg); top: 0; right: 0; left: auto; } /* 右侧布局左上角 */
-    .section-item.right::after { transform: rotate(0deg); bottom: 0; left: 0; right: auto; } /* 右侧布局左下角 */
+    .section-item::after { bottom: 0; right: 0; transform: rotate(270deg); }
+    .section-item.right::before { transform: rotate(180deg); top: 0; right: 0; left: auto; }
+    .section-item.right::after { transform: rotate(0deg); bottom: 0; left: 0; right: auto; }
 
     [data-theme=dark] .section-item::before,
     [data-theme=dark] .section-item::after {
-        background: radial-gradient(circle at top left, transparent 20px, #2c2c2c 20px);
+        background: radial-gradient(circle at top left, transparent 20px, var(--bg-color-dark) 20px);
     }
     [data-theme=dark] .section-item {
-        background-color: #2c2c2c;
+        background-color: var(--bg-color-dark);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     /* 当 section 进入可视区域时添加 animated 类 (需要 JS 或 Intersection Observer) */
     .section-item.is-visible {
         opacity: 1;
-        transform: perspective(1000px) rotateY(0deg) translateX(0); /* 3D 翻转入场结束状态 */
+        transform: perspective(1000px) rotateY(0deg) translateX(0);
     }
 
     .section-item img {
-        width: 45%; /* 保持原有宽度 */
-        height: 100%; /* 保持原有高度 */
-        object-fit: contain; /* 图片不再裁剪，而是包含显示 */
-        border-radius: 8px; /* 保持原有圆角 */
-        filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2)); /* 增加滤镜阴影 */
+        width: 45%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+        filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
         transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
     }
 
     .section-item:hover img {
-        transform: scale(1.05) rotateZ(3deg); /* 放大并轻微旋转 */
-        filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.3)) saturate(1.2); /* 增强阴影并饱和度提升 */
+        transform: scale(1.05) rotateZ(3deg);
+        filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.3)) saturate(1.2);
     }
 
     .section-item .content {
-        width: 55%; /* 保持原有宽度 */
-        margin-left: 20px; /* 左侧布局的 margin */
-        margin-right: 20px; /* 右侧布局的 margin */
+        width: 55%;
+        margin-left: 20px;
+        margin-right: 20px;
         max-height: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
-        transition: width 0.5s ease, margin-left 0.3s ease; /* 保持原有过渡 */
+        transition: width 0.5s ease, margin-left 0.3s ease;
     }
     .section-item.right .content {
-        margin-left: auto; /* 自动调整左侧 margin */
-        margin-right: 20px; /* 右侧布局的 margin */
+        margin-left: auto;
+        margin-right: 20px;
     }
 
     .section-item .content h2 {
         display: inline-block;
         position: relative;
-        overflow: hidden; /* 确保波浪线不溢出 */
-        padding-bottom: 5px; /* 为下划线留空间 */
-        color: #333; /* 默认颜色 */
+        overflow: hidden;
+        padding-bottom: 5px;
+        color: var(--text-color-light);
         transition: color 0.3s ease;
-        margin-top: 0; /* 保持原有 margin */
-        margin-bottom: 15px; /* 保持原有 margin */
+        margin-top: 0;
+        margin-bottom: 15px;
     }
 
     .section-item .content h2::after {
@@ -401,20 +415,20 @@ btf.addGlobalFn('pjaxSend', () => {
         bottom: 0;
         width: 100%;
         height: 3px;
-        background: linear-gradient(90deg, #FFD700, #FF6347, #4682B4, #32CD32); /* 彩虹渐变 */
-        background-size: 200% 100%; /* 为动画准备 */
-        animation: waveUnderline 3s linear infinite alternate; /* 波浪线动画 */
-        transform: scaleX(0); /* 初始隐藏 */
+        background: linear-gradient(90deg, #FFD700, #FF6347, #4682B4, #32CD32);
+        background-size: 200% 100%;
+        animation: waveUnderline 3s linear infinite alternate;
+        transform: scaleX(0);
         transform-origin: left;
         transition: transform 0.4s ease-out;
     }
 
     .section-item.is-visible .content h2::after {
-        transform: scaleX(1); /* 标题出现时显示下划线 */
+        transform: scaleX(1);
     }
 
     .section-item:hover .content h2 {
-        color: rgb(40, 231, 139); /* 悬停时颜色变化 */
+        color: var(--primary-green);
     }
 
     @keyframes waveUnderline {
@@ -423,25 +437,32 @@ btf.addGlobalFn('pjaxSend', () => {
     }
 
     .section-item ul {
-        padding-left: 0; /* 移除默认列表点 */
-        list-style: none; /* 移除默认列表样式 */
+        padding-left: 0;
+        list-style: none;
     }
 
     .section-item ul li {
         opacity: 0;
         transform: translateY(10px);
+        /* 使用 calc() 优化延迟，更简洁 */
         animation: listItemFadeIn 0.6s ease-out forwards;
         position: relative;
-        padding-left: 30px; /* 为更大图标留空 */
-        margin-bottom: 10px; /* 增加行间距 */
+        padding-left: 30px;
+        margin-bottom: 10px;
     }
     /* 为每个 li 添加不同的延迟 */
-    .section-item.is-visible ul li:nth-child(1) { animation-delay: 0.2s; } /* 稍微提前 */
+    .section-item.is-visible ul li:nth-child(n) { 
+        animation-delay: calc(0.2s + (var(--item-index, 0) * 0.1s)); 
+    }
+    /* 注意：上面的 calc() 需要在 HTML 中为 li 添加 --item-index 变量，或者继续使用原有的 nth-child 选择器 */
+    /* 为保持与原代码一致性，此处保留原有 nth-child，或在 JS 中动态设置 */
+    .section-item.is-visible ul li:nth-child(1) { animation-delay: 0.2s; }
     .section-item.is-visible ul li:nth-child(2) { animation-delay: 0.3s; }
     .section-item.is-visible ul li:nth-child(3) { animation-delay: 0.4s; }
     .section-item.is-visible ul li:nth-child(4) { animation-delay: 0.5s; }
     .section-item.is-visible ul li:nth-child(5) { animation-delay: 0.6s; }
     .section-item.is-visible ul li:nth-child(6) { animation-delay: 0.7s; }
+
 
     @keyframes listItemFadeIn {
         0% { opacity: 0; transform: translateY(10px); }
@@ -449,18 +470,18 @@ btf.addGlobalFn('pjaxSend', () => {
     }
 
     .section-item ul li::before {
-        content: '✨'; /* 使用 emoji 或 icon font */
+        content: '✨';
         position: absolute;
         left: 0;
         top: 50%;
-        transform: translateY(-50%) scale(1); /* 初始显示，已修复 */
-        font-size: 1.2em; /* 稍大 */
+        transform: translateY(-50%) scale(1);
+        font-size: 1.2em;
         transition: transform 0.3s var(--transition-ease);
     }
 
     .section-item ul li:hover::before {
-        transform: translateY(-50%) scale(1.2); /* 悬停时放大 */
-        animation: iconBounce 0.5s ease-out forwards; /* 弹跳动画 */
+        transform: translateY(-50%) scale(1.2);
+        animation: iconBounce 0.5s ease-out forwards;
     }
 
     @keyframes iconBounce {
@@ -473,72 +494,83 @@ btf.addGlobalFn('pjaxSend', () => {
     /* 个人信息内部的 Flexbox 布局 */
     .info-columns {
         display: flex;
-        flex-wrap: wrap; /* 允许换行 */
-        gap: 15px; /* 间距 */
-        align-items: flex-start; /* 顶部对齐 */
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: flex-start;
     }
 
     .info-columns .column {
-        flex: 1; /* 均分空间 */
-        min-width: 150px; /* 最小宽度，防止过小 */
+        flex: 1;
+        min-width: 150px;
     }
     .info-columns ul {
-        width: 100%; /* 确保 ul 占据整个 info-columns 宽度 */
+        width: 100%;
     }
     .info-columns ul li {
-        padding-left: 0; /* 内部 li 不再有左边距 */
+        padding-left: 0;
     }
     .info-columns ul li::before {
-        display: none; /* 内部 li 不显示图标 */
+        display: none;
     }
     /* 邮箱单独一行 */
     .info-email-item {
-        margin-top: 10px; /* 与上方列保持距离 */
-        width: 100%; /* 独占一行 */
+        margin-top: 10px;
+        width: 100%;
+        /* 在这里显式覆盖，确保即使有 info-columns 内部 li 的样式也不会被影响 */
+        padding-left: 30px !important; 
+    }
+    .info-email-item::before {
+        content: '📧'; /* 为邮箱添加一个独立的图标 */
+        display: block !important; /* 确保显示 */
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%) scale(1);
+        font-size: 1.2em;
     }
 
 
     /* --- 底部站点链接区 (Wrapper) 升级 --- */
     .wrapper {
-        text-align: center; /* 保持原有居中 */
-        padding: 30px; /* 增加内边距 */
-        margin: 20px 10px 0 10px; /* 保持原有 margin */
-        border-radius: 20px; /* 增加圆角 */
-        background-color: white;
+        text-align: center;
+        padding: 30px;
+        margin: 20px 10px 0 10px;
+        border-radius: 20px;
+        background-color: var(--bg-color-light);
         height: auto;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* 更强的阴影 */
+        box-shadow: 0 10px 30px var(--shadow-light);
         position: relative;
-        overflow: hidden; /* 防止溢出 */
+        overflow: hidden;
     }
     [data-theme=dark] .wrapper {
-        background-color: #2c2c2c;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        background-color: var(--bg-color-dark);
+        box-shadow: 0 10px 30px var(--shadow-dark);
     }
 
     .wrapper .label {
         font-family: 'Handlee', cursive;
         font-size: 2.5em;
-        margin-bottom: 20px; /* 调整底部 margin */
-        color: #444;
+        margin-bottom: 20px;
+        color: var(--text-color-light);
         text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     }
 
     .wrapper .site-grid {
-        margin-top: 10px; /* 保持原有 margin */
-        border-radius: 8px; /* 保持原有圆角 */
+        margin-top: 10px;
+        border-radius: 8px;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 更灵活的网格 */
-        gap: 20px; /* 增加间隙 */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
         width: 100%;
         height: auto;
     }
 
     .wrapper .site-item {
         z-index: 1;
-        border-radius: 15px; /* 增加圆角 */
+        border-radius: 15px;
         position: relative;
         width: 100%;
-        height: 220px; /* 稍高 */
+        height: 220px;
         background-size: cover;
         background-position: center;
         display: flex;
@@ -548,9 +580,10 @@ btf.addGlobalFn('pjaxSend', () => {
         overflow: hidden;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
-        animation: fadeInScale 0.8s ease-out forwards; /* 单独入场动画 */
-        opacity: 0;
+        opacity: 0; /* 初始隐藏 */
         transform: scale(0.9);
+        /* 使用 calc() 统一管理动画延迟 */
+        animation: fadeInScale 0.8s ease-out forwards;
     }
     /* 错位延迟入场 */
     .wrapper .site-item:nth-child(1) { animation-delay: 0.2s; }
@@ -564,35 +597,35 @@ btf.addGlobalFn('pjaxSend', () => {
     }
 
     .wrapper .site-item:hover {
-        transform: scale(1.08) translateY(-8px); /* 放大并上浮更多 */
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); /* 更明显的阴影 */
+        transform: scale(1.08) translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         z-index: 2;
     }
 
     .wrapper .site-overlay {
         position: absolute;
         inset: 0;
-        border-radius: 15px; /* 增加圆角 */
-        background: rgba(255, 255, 255, 0.3); /* 初始透明度调整 */
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.3);
         color: #000;
-        font: bold 1.8em sans-serif; /* 字体更大 */
+        font: bold 1.8em sans-serif;
         text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-        backdrop-filter: blur(5px); /* 毛玻璃效果 */
+        backdrop-filter: blur(5px);
         transition: background 0.6s ease, color 0.6s ease, backdrop-filter 0.6s ease;
-        display: flex; /* 确保文字居中 */
+        display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .wrapper .site-item:hover .site-overlay {
-        background: rgba(0, 0, 0, 0.6); /* 悬停时半透明黑 */
+        background: rgba(0, 0, 0, 0.6);
         color: #ffffff;
-        backdrop-filter: blur(0px); /* 悬停时移除模糊 */
-        animation: overlayFadeIn 0.3s ease-out forwards; /* 叠加层出现动画 */
+        backdrop-filter: blur(0px);
+        animation: overlayFadeIn 0.3s ease-out forwards;
     }
 
     [data-theme=dark] .wrapper .site-overlay {
-        background: rgba(0, 0, 0, 0.6); /* 夜间模式下默认黑色透明 */
+        background: rgba(0, 0, 0, 0.6);
         color: #ffffff;
     }
 
@@ -609,44 +642,44 @@ btf.addGlobalFn('pjaxSend', () => {
     /* 窄屏适配，在保持功能的前提下简化动画 */
     @media (max-width: 870px) {
         .author-box {
-            height: 300px; /* 窄屏高度降低 */
-            background-size: 300% auto, 250% auto, 200% auto; /* 背景图缩放 */
+            height: 300px;
+            background-size: 300% auto, 250% auto, 200% auto;
             animation: 
                 starsPan 120s linear infinite,
                 cloudPan2 60s linear infinite,
                 cloudPan1 40s linear infinite;
         }
-        .author-box::before { /* 粒子效果在窄屏下可能过密，可以调整或关闭 */
+        .author-box::before { /* 粒子效果在窄屏下关闭 */
             display: none; 
         }
 
         .section-item img {
-            display: none; /* 窄屏下隐藏图片 */
+            display: none;
         }
         .section-item .content {
-            width: 100%; /* 内容占据全部宽度 */
-            margin: 0; /* 移除左右 margin */
+            width: 100%;
+            margin: 0;
         }
         .section-item {
             height: auto;
             min-height: 200px;
-            padding: 15px; /* 减小内边距 */
-            flex-direction: column; /* 窄屏下改为垂直布局 */
-            transform: perspective(800px) rotateY(-10deg) translateX(-30px); /* 简化入场动画 */
-            justify-content: center; /* 内容垂直居中 */
-            align-items: center; /* 内容水平居中 */
+            padding: 15px;
+            flex-direction: column;
+            transform: perspective(800px) rotateY(-10deg) translateX(-30px);
+            justify-content: center;
+            align-items: center;
         }
         .section-item.is-visible {
             transform: perspective(800px) rotateY(0deg) translateX(0);
         }
-        .section-item::before, .section-item::after { /* 窄屏卷边效果简化 */
+        .section-item::before, .section-item::after {
             width: 30px;
             height: 30px;
-            background: radial-gradient(circle at top left, transparent 15px, white 15px);
+            background: radial-gradient(circle at top left, transparent 15px, var(--bg-color-light) 15px);
         }
         [data-theme=dark] .section-item::before,
         [data-theme=dark] .section-item::after {
-            background: radial-gradient(circle at top left, transparent 15px, #2c2c2c 15px);
+            background: radial-gradient(circle at top left, transparent 15px, var(--bg-color-dark) 15px);
         }
 
         .wrapper .site-grid {
@@ -660,7 +693,7 @@ btf.addGlobalFn('pjaxSend', () => {
             transform: scale(1);
         }
         .wrapper .site-item:hover {
-            transform: scale(1.05); /* 窄屏只做轻微放大 */
+            transform: scale(1.05);
         }
     }
 
@@ -677,12 +710,13 @@ btf.addGlobalFn('pjaxSend', () => {
         .info-columns .column {
             width: 100%;
         }
+        /* 邮箱项在手机上保持独立图标显示 */
         .info-email-item {
-            margin-left: 0 !important; /* 确保在手机上也没有左边距 */
-            padding-left: 30px !important; /* 保持图标的左边距 */
+            margin-left: 0 !important; 
+            padding-left: 30px !important; 
         }
         .info-email-item::before {
-            display: block !important; /* 在手机上显示图标 */
+            display: block !important; 
         }
     }
 </style>
